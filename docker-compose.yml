@@ -10,7 +10,7 @@ services:
       target: ${APP_BUILD_TARGET:-development}
     volumes:
       - type: bind
-        source: ./src
+        source: ./src/surfbeverage
         target: /workspace
       - type: volume
         source: psysh-store
@@ -41,7 +41,7 @@ services:
         mode: host
     volumes:
       - type: bind
-        source: ./src
+        source: ./src/surfbeverage
         target: /workspace
 
   db:
@@ -65,10 +65,10 @@ services:
       - MYSQL_PASSWORD=${DB_PASSWORD:-secret}
       - MYSQL_ROOT_PASSWORD=${DB_PASSWORD:-secret}
 
-  mailhog:
-    image: mailhog/mailhog
-    ports:
-      - target: 8025
-        published: ${MAILHOG_PUBLISHED_PORT:-8025}
-        protocol: tcp
-        mode: host
+  # mailhog:
+  #   image: mailhog/mailhog
+  #   ports:
+  #     - target: 8025
+  #       published: ${MAILHOG_PUBLISHED_PORT:-8025}
+  #       protocol: tcp
+  #       mode: host
